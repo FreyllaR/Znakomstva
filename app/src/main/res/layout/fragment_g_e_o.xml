@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/purple"
+    android:padding="16dp"
     tools:context=".GEOFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/location_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/location" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/location_explanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Геолокация необходима для того, чтобы находить людей рядом с вами и помогать нам делать наше приложение."
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/semibold"
+        android:textSize="22sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:padding="16dp"
+        android:background="@android:color/transparent" />
+
+    <Button
+        android:id="@+id/enable_location_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Включить геолокацию"
+        android:backgroundTint="@color/black"
+        android:textSize="22sp"
+        android:fontFamily="@font/semibold"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/disable_location_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Отказаться"
+        android:backgroundTint="@color/black"
+        android:textSize="22sp"
+        android:fontFamily="@font/semibold"
+        android:layout_marginBottom="32dp" />
+
+</LinearLayout>

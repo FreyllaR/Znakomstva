@@ -1,3 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="hobby_array">
+        <item>Чтение</item>
+        <item>Рисование</item>
+        <item>Музыка</item>
+        <item>Кулинария</item>
+        <item>Фотография</item>
+        <item>Садоводство</item>
+        <item>Путешествия</item>
+        <item>Вязание</item>
+        <item>Моделирование</item>
+        <item>Кино</item>
+    </string-array>
+
+    <string-array name="social_life_array">
+        <item>Вечеринки</item>
+        <item>Посещение клубов</item>
+        <item>Встречи с друзьями</item>
+        <item>Семейные мероприятия</item>
+        <item>Спортивные мероприятия</item>
+        <item>Культурные мероприятия</item>
+        <item>Походы в кафе</item>
+        <item>Посещение концертов</item>
+        <item>Участие в волонтерских акциях</item>
+        <item>Путешествия с друзьями</item>
+    </string-array>
+
+    <string-array name="creativity_array">
+        <item>Рисование</item>
+        <item>Письмо</item>
+        <item>Музыка</item>
+        <item>Танцы</item>
+        <item>Фотография</item>
+        <item>Кулинария</item>
+        <item>Декорирование</item>
+        <item>Ремесла</item>
+        <item>Актерское мастерство</item>
+        <item>Создание видео</item>
+    </string-array>
+
+    <string-array name="active_lifestyle_array">
+        <item>Бег</item>
+        <item>Фитнес</item>
+        <item>Велоспорт</item>
+        <item>Плавание</item>
+        <item>Йога</item>
+        <item>Танцы</item>
+        <item>Горные лыжи</item>
+        <item>Скалолазание</item>
+        <item>Туризм</item>
+        <item>Спортивные игры</item>
+    </string-array>
+
+    <string-array name="sport_array">
+        <item>Футбол</item>
+        <item>Баскетбол</item>
+        <item>Теннис</item>
+        <item>Волейбол</item>
+        <item>Хоккей</item>
+        <item>Бокс</item>
+        <item>Плавание</item>
+        <item>Легкая атлетика</item>
+        <item>Гимнастика</item>
+        <item>Сноуборд</item>
+    </string-array>
+
+    <string-array name="travel_array">
+        <item>Пляжный отдых</item>
+        <item>Горные походы</item>
+        <item>Круиз</item>
+        <item>Экскурсии</item>
+        <item>Кемпинг</item>
+        <item>Путешествия по городам</item>
+        <item>Автопутешествия</item>
+        <item>Путешествия по культуре</item>
+        <item>Путешествия по природе</item>
+        <item>Путешествия с друзьями</item>
+    </string-array>
+
+    <string-array name="home_time_array">
+        <item>Чтение книг</item>
+        <item>Просмотр фильмов</item>
+        <item>Приготовление еды</item>
+        <item>Игра на музыкальных инструментах</item>
+        <item>Настольные игры</item>
+        <item>Ремонт и обустройство</item>
+        <item>Садоводство</item>
+        <item>Рисование</item>
+        <item>Вязание</item>
+        <item>Работа над проектами</item>
+    </string-array>
+
+    <string-array name="movies_array">
+        <item>Драма</item>
+        <item>Комедия</item>
+        <item>Экшн</item>
+        <item>Ужасы</item>
+        <item>Фантастика</item>
+        <item>Приключения</item>
+        <item>Мультфильмы</item>
+        <item>Документальные</item>
+        <item>Романтика</item>
+        <item>Исторические</item>
+    </string-array>
+
+    <string-array name="animals_array">
+        <item>Собаки</item>
+        <item>Кошки</item>
+        <item>Птицы</item>
+        <item>Рыбы</item>
+        <item>Грызуны</item>
+        <item>Рептилии</item>
+        <item>Лошади</item>
+        <item>Пауки</item>
+        <item>Свиньи</item>
+        <item>Кролики</item>
+    </string-array>
+
+    <string-array name="personal_growth_array">
+        <item>Чтение книг</item>
+        <item>Курсы и тренинги</item>
+        <item>Медитация</item>
+        <item>Спорт</item>
+        <item>Путешествия</item>
+        <item>Волонтерство</item>
+        <item>Общение с интересными людьми</item>
+        <item>Саморазвитие</item>
+        <item>Психология</item>
+        <item>Креативные хобби</item>
+    </string-array>
+
+    <string-array name="alcohol_smoking_array">
+        <item>Не пью и не курю</item>
+        <item>Пью, но не курю</item>
+        <item>Курю, но не пью</item>
+        <item>Пью и курю</item>
+        <item>Пью только по праздникам</item>
+        <item>Курю только в компании</item>
+        <item>Не против выпивки</item>
+        <item>Не против курения</item>
+        <item>Стараюсь бросить</item>
+        <item>Забочусь о здоровье</item>
+    </string-array>
+
+    <string-array name="sporty_body_array">
+        <item>Спортивное телосложение</item>
+        <item>Среднее телосложение</item>
+        <item>Полное телосложение</item>
+        <item>Худощавое телосложение</item>
+        <item>Атлетическое телосложение</item>
+        <item>Мускулистое телосложение</item>
+        <item>Тонкое телосложение</item>
+        <item>Крепкое телосложение</item>
+        <item>Стройное телосложение</item>
+        <item>Классическое телосложение</item>
+    </string-array>
 </resources>
