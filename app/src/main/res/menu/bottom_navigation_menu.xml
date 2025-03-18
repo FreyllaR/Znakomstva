@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_partners"
+        android:icon="@drawable/hearts"
+        android:title="Партнеры" />
+
+    <item
+        android:id="@+id/navigation_messages"
+        android:icon="@drawable/messages"
+        android:title="Сообщения" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/profile_acc"
+        android:title="Профиль" />
+
+
+</menu>
