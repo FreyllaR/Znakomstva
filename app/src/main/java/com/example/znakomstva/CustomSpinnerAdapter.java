@@ -16,7 +16,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
     private final Typeface typeface;
 
     public CustomSpinnerAdapter(Context context, String[] values, int fontResourceId) {
-        super(context, android.R.layout.simple_spinner_item, values);
+        super(context, R.layout.spinner_item, values); // Используйте ваш кастомный макет
         this.context = context;
         this.values = values;
         // Получаем шрифт из ресурсов

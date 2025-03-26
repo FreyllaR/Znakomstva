@@ -172,7 +172,7 @@
         android:text="О себе"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
@@ -195,7 +195,7 @@
         android:text="Цель знакомства"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
@@ -210,6 +210,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Серьезные отношения"
+            android:textSize="18sp"
             android:fontFamily="@font/semibold"
             android:textColor="@color/white" />
 
@@ -219,6 +220,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/semibold"
             android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="Свободные отношения" />
 
         <RadioButton
@@ -227,6 +229,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/semibold"
             android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="Дружеское общение" />
 
         <RadioButton
@@ -235,6 +238,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/semibold"
             android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="Новый опыт" />
     </RadioGroup>
 
@@ -245,7 +249,7 @@
         android:text="Интересы"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
@@ -255,12 +259,14 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:textSize="18sp"
         android:text="Хобби" />
     <Spinner
         android:id="@+id/hobbySpinner"
         android:layout_width="match_parent"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <!-- Социальная жизнь -->
@@ -269,12 +275,14 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:textSize="18sp"
         android:text="Социальная жизнь" />
     <Spinner
         android:id="@+id/socialLifeSpinner"
         android:layout_width="match_parent"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <!-- Творчество -->
@@ -283,12 +291,14 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:textSize="18sp"
         android:text="Творчество" />
     <Spinner
         android:id="@+id/creativitySpinner"
         android:layout_width="match_parent"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <!-- Активный образ жизни -->
@@ -297,12 +307,14 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:textSize="18sp"
         android:text="Активный образ жизни" />
     <Spinner
         android:id="@+id/activeLifestyleSpinner"
         android:layout_width="match_parent"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <!-- Спорт -->
@@ -310,6 +322,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/semibold"
+        android:textSize="18sp"
         android:textColor="@color/white"
         android:text="Спорт" />
     <Spinner
@@ -317,6 +330,7 @@
         android:layout_width="match_parent"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <!-- Путешествия -->
@@ -325,12 +339,14 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:textSize="18sp"
         android:text="Путешествия" />
     <Spinner
         android:id="@+id/travelSpinner"
         android:layout_width="match_parent"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <!-- Время дома -->
@@ -338,6 +354,7 @@
         android:layout_width="wrap_content"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:textSize="18sp"
         android:layout_height="wrap_content"
         android:text="Время дома" />
     <Spinner
@@ -345,6 +362,7 @@
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
         android:layout_width="match_parent"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <!-- Фильмы и сериалы -->
@@ -352,6 +370,7 @@
         android:layout_width="wrap_content"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:textSize="18sp"
         android:layout_height="wrap_content"
         android:text="Фильмы и сериалы" />
     <Spinner
@@ -359,12 +378,14 @@
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
         android:layout_width="match_parent"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <!-- Животные -->
     <TextView
         android:layout_width="wrap_content"
         android:fontFamily="@font/semibold"
+        android:textSize="18sp"
         android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:text="Животные" />
@@ -373,6 +394,7 @@
         android:layout_width="match_parent"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <!-- Личное (рост, свободен или нет) -->
@@ -381,18 +403,21 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:textSize="18sp"
         android:text="Личное (рост, свободен или нет)" />
     <Spinner
         android:id="@+id/personalGrowthSpinner"
         android:layout_width="match_parent"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/semibold"
+        android:textSize="18sp"
         android:textColor="@color/white"
         android:text="Отношение к алкоголю и курению" />
     <Spinner
@@ -400,12 +425,14 @@
         android:layout_width="match_parent"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="wrap_content"
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
+        android:textSize="18sp"
         android:layout_height="wrap_content"
         android:text="Спортивное телосложение" />
     <Spinner
@@ -413,6 +440,7 @@
         android:fontFamily="@font/semibold"
         android:textColor="@color/white"
         android:layout_width="match_parent"
+        android:padding="8dp"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/nextButton"

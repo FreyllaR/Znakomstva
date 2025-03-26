@@ -98,6 +98,19 @@ public class AboutPersonFragment extends Fragment {
         personalGrowthSpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.personal_growth_array), R.font.semibold));
         alcoholSmokingSpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.alcohol_smoking_array), R.font.semibold));
         sportyBodySpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.sporty_body_array), R.font.semibold));
+
+        hobbySpinner.setSelection(0);
+        socialLifeSpinner.setSelection(0);
+        creativitySpinner.setSelection(0);
+        activeLifestyleSpinner.setSelection(0);
+        sportSpinner.setSelection(0);
+        travelSpinner.setSelection(0);
+        homeTimeSpinner.setSelection(0);
+        moviesSpinner.setSelection(0);
+        animalsSpinner.setSelection(0);
+        personalGrowthSpinner.setSelection(0);
+        alcoholSmokingSpinner.setSelection(0);
+        sportyBodySpinner.setSelection(0);
     }
 
     private void goToProfileFragment() {
