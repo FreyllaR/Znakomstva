@@ -1,26 +1,44 @@
 package com.example.znakomstva;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button; // Импортируем Button
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-public class activity_register extends Fragment { // Измените имя класса на ActivityRegister для соответствия стандартам именования
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-    public activity_register() {
-        // Required empty public constructor
-    }
+public class activity_register extends Fragment {
+
+    private ApiService apiService;
+    private EditText usernameEditText;
+    private EditText passwordEditText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_activity_register, container, false);
+
+
+        // Инициализация Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.31.125:8080") // Замените на ваш базовый URL
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        apiService = retrofit.create(ApiService.class);
 
         // Найдите ваш TextView
         TextView registerTextView = view.findViewById(R.id.registerTextView);
@@ -39,12 +57,41 @@ public class activity_register extends Fragment { // Измените имя к�
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Переход к фрагменту GEOFragment
-                loadFragment(new GEOFragment()); // Замените GEOFragment на ваш фрагмент геолокации
+                usernameEditText = view.findViewById(R.id.usernameEditText);
+                passwordEditText = view.findViewById(R.id.passwordEditText);
+                checkUserExists(usernameEditText.getText().toString(), passwordEditText.getText().toString());
             }
         });
 
         return view;
+    }
+
+    private void checkUserExists(String username, String password) {
+        Call<Boolean> call = apiService.checkUserExists(username, password);
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) { // Проверяем, что тело ответа не null
+                        if (response.body()) {
+                            Toast.makeText(getContext(), "Добро пожаловать!", Toast.LENGTH_SHORT).show();
+                            loadFragment(new GEOFragment());
+                        } else {
+                            Toast.makeText(getContext(), "Нет такого аккаунта, зарегистрируемся?)", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getContext(), "Ответ от сервера пустой", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Ошибка: " + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void loadFragment(Fragment fragment) {

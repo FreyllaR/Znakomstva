@@ -64,7 +64,7 @@ public class FirstRegisterFragment extends Fragment {
 
         // Проверка на пустые поля
         if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(getActivity(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Пожалуйста заполните все поля :(", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -82,10 +82,10 @@ public class FirstRegisterFragment extends Fragment {
             @Override
             public void onResponse(Call<UserDto> call, Response<UserDto> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getActivity(), "User  registered successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Аккаунт успешно создан :) Мы тебя ждем!", Toast.LENGTH_SHORT).show();
                     loadFragment(new activity_register());
                 } else {
-                    String errorMessage = "Registration failed: " + response.message();
+                    String errorMessage = "Не получилось зарегистрироваться: " + response.message();
                     Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_SHORT).show();
                     Log.e("RegistrationError", errorMessage);
                 }
