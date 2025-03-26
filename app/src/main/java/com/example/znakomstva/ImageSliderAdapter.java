@@ -16,12 +16,10 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
 
     private List<Uri> imageUris;
     private Context context;
-    private OnImageClickListener listener;
 
-    public ImageSliderAdapter(Context context, List<Uri> imageUris, OnImageClickListener listener) {
+    public ImageSliderAdapter(Context context, List<Uri> imageUris) {
         this.context = context;
         this.imageUris = imageUris;
-        this.listener = listener;
     }
 
     @NonNull
@@ -34,12 +32,11 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageURI(imageUris.get(position));
-        holder.itemView.setOnClickListener(v -> listener.onImageClick(position));
     }
 
     @Override
     public int getItemCount() {
-        return imageUris.size();
+        return imageUris.size(); // Убедитесь, что возвращаете правильное количество изображений
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,9 +46,5 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
         }
-    }
-
-    public interface OnImageClickListener {
-        void onImageClick(int position);
     }
 }

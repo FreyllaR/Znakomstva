@@ -1,12 +1,13 @@
 package com.example.znakomstva;
 
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,8 @@ public class ChoosePartnerFragment extends Fragment {
         if (getArguments() != null) {
             imageUris = getArguments().getParcelableArrayList("imageUris");
             textItems = getArguments().getStringArrayList("textItems");
+            Log.d("ChoosePartnerFragment", "Image URIs: " + imageUris);
+            Log.d("ChoosePartnerFragment", "Text Items: " + textItems);
         }
     }
 
@@ -56,7 +59,7 @@ public class ChoosePartnerFragment extends Fragment {
         viewPager = view.findViewById(R.id.viewPager);
 
         // Настройка адаптера для ViewPager2
-        adapter = new MyFragmentStateAdapter(this);
+        adapter = new MyFragmentStateAdapter(this, imageUris, textItems);
         viewPager.setAdapter(adapter);
 
         // Привязка TabLayout к ViewPager
