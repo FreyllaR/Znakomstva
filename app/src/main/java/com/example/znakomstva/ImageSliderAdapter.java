@@ -1,7 +1,6 @@
 package com.example.znakomstva;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +13,12 @@ import java.util.List;
 
 public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.ViewHolder> {
 
-    private List<Uri> imageUris;
+    private List<Integer> imageResIds; // Используем Integer для ресурсов
     private Context context;
 
-    public ImageSliderAdapter(Context context, List<Uri> imageUris) {
+    public ImageSliderAdapter(Context context, List<Integer> imageResIds) {
         this.context = context;
-        this.imageUris = imageUris;
+        this.imageResIds = imageResIds;
     }
 
     @NonNull
@@ -31,12 +30,12 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imageView.setImageURI(imageUris.get(position));
+        holder.imageView.setImageResource(imageResIds.get(position)); // Используем setImageResource
     }
 
     @Override
     public int getItemCount() {
-        return imageUris.size(); // Убедитесь, что возвращаете правильное количество изображений
+        return imageResIds.size(); // Возвращаем количество изображений
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

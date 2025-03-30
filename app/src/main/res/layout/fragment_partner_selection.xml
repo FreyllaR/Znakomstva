@@ -1,31 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".PartnerSelectionFragment">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
     <LinearLayout
-        android:id="@+id/indicatorLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:padding="16dp" />
-</LinearLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="500dp" />
+
+
+        <!-- Центрированное изображение -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <!-- Кнопки лайка и дизлайка -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <ImageButton
+                    android:id="@+id/dislikeButton"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:scaleType="fitCenter"
+                    android:background="@null"
+                    android:src="@drawable/dislike"
+                    android:layout_marginEnd="16dp" />
+
+                <ImageButton
+                    android:id="@+id/likeButton"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:scaleType="fitCenter"
+                    android:background="@null"
+                    android:src="@drawable/like"
+                    android:layout_marginEnd="16dp" />
+
+                <ImageButton
+                    android:id="@+id/superlikeButton"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:scaleType="fitCenter"
+                    android:background="@null"
+                    android:src="@drawable/superlike"
+                    android:layout_marginEnd="16dp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Описание -->
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:padding="16dp" />
+    </LinearLayout>
+</ScrollView>
