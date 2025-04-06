@@ -19,7 +19,7 @@
         android:id="@+id/registerImageView"
         android:layout_width="400dp"
         android:layout_height="200dp"
-        android:src="@drawable/first_time"
+        android:src="@drawable/first"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/backButton"
         app:layout_constraintBottom_toTopOf="@+id/usernameEditText"

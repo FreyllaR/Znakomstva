@@ -1,5 +1,6 @@
 package com.example.znakomstva;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -20,15 +22,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
-import java.util.Locale;
-
 
 public class AboutPersonFragment extends Fragment {
 
     private static final int GALLERY_REQUEST_CODE = 1;
 
     private EditText aboutEditText, usernameEditText, ageEditText;
-    private RadioGroup purposeRadioGroup;
+    private RadioGroup purposeRadioGroup, genderRadioGroup; // Добавлено RadioGroup для пола
     private Spinner hobbySpinner, socialLifeSpinner, creativitySpinner, activeLifestyleSpinner, sportSpinner, travelSpinner, homeTimeSpinner, moviesSpinner, animalsSpinner, personalGrowthSpinner, alcoholSmokingSpinner, sportyBodySpinner;
     private GridLayout photosGridLayout;
 
@@ -52,6 +52,7 @@ public class AboutPersonFragment extends Fragment {
         ageEditText = view.findViewById(R.id.ageEditText);
         aboutEditText = view.findViewById(R.id.aboutEditText);
         purposeRadioGroup = view.findViewById(R.id.purposeRadioGroup);
+        genderRadioGroup = view.findViewById(R.id.genderRadioGroup);
         hobbySpinner = view.findViewById(R.id.hobbySpinner);
         socialLifeSpinner = view.findViewById(R.id.socialLifeSpinner);
         creativitySpinner = view.findViewById(R.id.creativitySpinner);
@@ -148,10 +149,12 @@ public class AboutPersonFragment extends Fragment {
             return;
         }
 
-        // Добавьте дополнительные проверки для других обязательных полей, если необходимо
+        // Добавление выбранного пола в textItems
+        String selectedGender = getSelectedGender();
 
         ArrayList<String> textItems = new ArrayList<>();
         textItems.add(usernameEditText.getText().toString().substring(0, 1).toUpperCase() + usernameEditText.getText().toString().substring(1) + ", " + ageEditText.getText().toString());
+        textItems.add("Пол: " + selectedGender); // Добавлено поле для пола
         textItems.add("О себе: " + aboutEditText.getText().toString());
         textItems.add("Цель знакомства: " + getSelectedPurpose());
         textItems.add("Хобби: " + (hobbySpinner.getSelectedItem() != null ? hobbySpinner.getSelectedItem().toString() : "Не указано"));
@@ -217,5 +220,15 @@ public class AboutPersonFragment extends Fragment {
             return "Новый опыт";
         }
         return "Не указано";
+    }
+
+    private String getSelectedGender() {
+        int selectedId = genderRadioGroup.getCheckedRadioButtonId();
+        if (selectedId == R.id.maleRadioButton) {
+            return "Мужчина";
+        } else if (selectedId == R.id.femaleRadioButton) {
+            return "Женщина";
+        }
+        return "Не указано"; // Если ничего не выбрано
     }
 }
