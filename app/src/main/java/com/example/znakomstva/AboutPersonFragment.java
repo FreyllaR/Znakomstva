@@ -13,9 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -92,7 +92,7 @@ public class AboutPersonFragment extends Fragment {
         creativitySpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.creativity_array), R.font.semibold));
         activeLifestyleSpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.active_lifestyle_array), R.font.semibold));
         sportSpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.sport_array), R.font.semibold));
-        travelSpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.travel_array), R.font.semibold));
+        travelSpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.travel_array), R .font.semibold));
         homeTimeSpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.home_time_array), R.font.semibold));
         moviesSpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.movies_array), R.font.semibold));
         animalsSpinner.setAdapter(new CustomSpinnerAdapter(getContext(), getResources().getStringArray(R.array.animals_array), R.font.semibold));
@@ -129,23 +129,23 @@ public class AboutPersonFragment extends Fragment {
 
         // Проверка на наличие хотя бы одного изображения
         if (imageUris.isEmpty()) {
-            Toast.makeText(getContext(), "Пожалуйста, добавьте хотя бы одно фото.", Toast.LENGTH_SHORT).show();
+            showCustomToast("Пожалуйста, добавьте хотя бы одно фото.");
             return;
         }
 
         // Проверка на заполненные обязательные поля
         if (usernameEditText.getText().toString().trim().isEmpty()) {
-            Toast.makeText(getContext(), "Пожалуйста, введите ваше имя.", Toast.LENGTH_SHORT).show();
+            showCustomToast("Пожалуйста, введите ваше имя.");
             return;
         }
 
         if (ageEditText.getText().toString().trim().isEmpty()) {
-            Toast.makeText(getContext(), "Пожалуйста, введите ваш возраст.", Toast.LENGTH_SHORT).show();
+            showCustomToast("Пожалуйста, введите ваш возраст.");
             return;
         }
 
         if (purposeRadioGroup.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(getContext(), "Пожалуйста, выберите цель знакомства.", Toast.LENGTH_SHORT).show();
+            showCustomToast("Пожалуйста, выберите цель знакомства.");
             return;
         }
 
@@ -205,7 +205,7 @@ public class AboutPersonFragment extends Fragment {
                 return;
             }
         }
-        Toast.makeText(getContext(), "Максимальное количество фото достигнуто", Toast.LENGTH_SHORT).show();
+        showCustomToast("Максимальное количество фото достигнуто");
     }
 
     private String getSelectedPurpose() {
@@ -230,5 +230,18 @@ public class AboutPersonFragment extends Fragment {
             return "Женщина";
         }
         return "Не указано"; // Если ничего не выбрано
+    }
+
+    private void showCustomToast(String message) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, null);
+
+        TextView text = layout.findViewById(R.id.toast_text);
+        text.setText(message);
+
+        Toast toast = new Toast(getActivity().getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
 }

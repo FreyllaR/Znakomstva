@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -31,7 +32,6 @@ public class activity_register extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_activity_register, container, false);
-
 
         // Инициализация Retrofit
         Retrofit retrofit = new Retrofit.Builder()
@@ -74,22 +74,22 @@ public class activity_register extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null) { // Проверяем, что тело ответа не null
                         if (response.body()) {
-                            Toast.makeText(getContext(), "Добро пожаловать!", Toast.LENGTH_SHORT).show();
+                            showCustomToast("Добро пожаловать!");
                             loadFragment(new GEOFragment());
                         } else {
-                            Toast.makeText(getContext(), "Нет такого аккаунта, зарегистрируемся?)", Toast.LENGTH_SHORT).show();
+                            showCustomToast("Нет такого аккаунта, зарегистрируемся?)");
                         }
                     } else {
-                        Toast.makeText(getContext(), "Ответ от сервера пустой", Toast.LENGTH_SHORT).show();
+                        showCustomToast("Ответ от сервера пустой");
                     }
                 } else {
-                    Toast.makeText(getContext(), "Ошибка: " + response.message(), Toast.LENGTH_SHORT).show();
+                    showCustomToast("Ошибка: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<Boolean> call, Throwable t) {
-                Toast.makeText(getContext(), "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                showCustomToast("Ошибка сети: " + t.getMessage());
             }
         });
     }
@@ -101,5 +101,19 @@ public class activity_register extends Fragment {
         fragmentTransaction.replace(R.id.fragment_container, fragment); // Убедитесь, что идентификатор совпадает
         fragmentTransaction.addToBackStack(null); // Добавляем в back stack, если нужно
         fragmentTransaction.commit();
+    }
+
+    private void showCustomToast(String message) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, null);
+
+        ImageView image = layout.findViewById(R.id.toast_image);
+        TextView text = layout.findViewById(R.id.toast_text);
+        text.setText(message);
+
+        Toast toast = new Toast(getActivity().getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
 }

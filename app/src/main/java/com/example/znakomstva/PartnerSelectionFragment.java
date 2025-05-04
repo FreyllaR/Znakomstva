@@ -1,6 +1,7 @@
 package com.example.znakomstva;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.location.Location;
@@ -9,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -87,7 +90,24 @@ public class PartnerSelectionFragment extends Fragment {
             getLocation(); // Получаем расстояние до нового партнера
         });
 
+        ImageButton superlikeButton = view.findViewById(R.id.superlikeButton);
+        superlikeButton.setOnClickListener(v -> showPremiumToast());
+
         return view;
+    }
+
+    private void showPremiumToast() {
+        LayoutInflater inflater = getLayoutInflater();
+        @SuppressLint("ResourceType") View layout = inflater.inflate(R.drawable.custom_premium_toast, null);
+
+        ImageView image = layout.findViewById(R.id.premium_toast_image);
+        TextView text = layout.findViewById(R.id.premium_toast_text);
+        text.setText("Для использования Superlike необходимо купить подписку Premium!");
+
+        Toast toast = new Toast(getActivity().getApplicationContext());
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 
     private void generateRandomDescription() {

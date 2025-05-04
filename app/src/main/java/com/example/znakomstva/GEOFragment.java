@@ -8,10 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -46,7 +47,7 @@ public class GEOFragment extends Fragment {
         });
 
         disableLocationButton.setOnClickListener(v -> {
-            Toast.makeText(getActivity(), "Геолокация отключена", Toast.LENGTH_SHORT).show();
+            showCustomToast("Геолокация отключена");
             goToAboutPersonFragment(); // Переход после нажатия на кнопку
         });
 
@@ -70,10 +71,9 @@ public class GEOFragment extends Fragment {
                         @Override
                         public void onSuccess(Location location) {
                             if (location != null) {
-                                // Здесь вы можете использовать местоположение
-                                Toast.makeText(getActivity(), "Широта: " + location.getLatitude() + ", Долгота: " + location.getLongitude(), Toast.LENGTH_SHORT).show();
+                                showCustomToast("Спасибо, это улучшает подбор партнера");
                             } else {
-                                Toast.makeText(getActivity(), "Геолокация не включена на устройстве", Toast.LENGTH_SHORT).show();
+                                showCustomToast("Геолокация не включена на устройстве");
                             }
                         }
                     });
@@ -89,6 +89,20 @@ public class GEOFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    private void showCustomToast(String message) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, null);
+
+        ImageView image = layout.findViewById(R.id.toast_image);
+        TextView text = layout.findViewById(R.id.toast_text);
+        text.setText(message);
+
+        Toast toast = new Toast(getActivity().getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -96,7 +110,7 @@ public class GEOFragment extends Fragment {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getLocation();
             } else {
-                Toast.makeText(getActivity(), "Разрешение на геолокацию отклонено", Toast.LENGTH_SHORT).show();
+                showCustomToast("Разрешение на геолокацию отклонено");
             }
         }
     }

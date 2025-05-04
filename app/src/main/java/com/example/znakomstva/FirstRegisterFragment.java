@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -64,7 +66,7 @@ public class FirstRegisterFragment extends Fragment {
 
         // Проверка на пустые поля
         if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(getActivity(), "Пожалуйста заполните все поля :(", Toast.LENGTH_SHORT).show();
+            showCustomToast("Пожалуйста заполните все поля :(");
             return;
         }
 
@@ -77,16 +79,16 @@ public class FirstRegisterFragment extends Fragment {
                 .build();
 
         ApiService apiService = retrofit.create(ApiService.class);
-        Call<UserDto> call = apiService.registerUser(user); // Отправьте объект UserDto
+        Call<UserDto> call = apiService.registerUser (user); // Отправьте объект UserDto
         call.enqueue(new Callback<UserDto>() {
             @Override
             public void onResponse(Call<UserDto> call, Response<UserDto> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getActivity(), "Аккаунт успешно создан :) Мы тебя ждем!", Toast.LENGTH_SHORT).show();
+                    showCustomToast("Аккаунт успешно создан :) Мы тебя ждем!");
                     loadFragment(new activity_register());
                 } else {
                     String errorMessage = "Не получилось зарегистрироваться: " + response.message();
-                    Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_SHORT).show();
+                    showCustomToast(errorMessage);
                     Log.e("RegistrationError", errorMessage);
                 }
             }
@@ -94,7 +96,7 @@ public class FirstRegisterFragment extends Fragment {
             @Override
             public void onFailure(Call<UserDto> call, Throwable t) {
                 String errorMessage = "Error: " + t.getMessage();
-                Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_SHORT).show();
+                showCustomToast(errorMessage);
                 Log.e("RegistrationError", errorMessage, t);
             }
         });
@@ -106,5 +108,19 @@ public class FirstRegisterFragment extends Fragment {
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    private void showCustomToast(String message) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, null);
+
+        ImageView image = layout.findViewById(R.id.toast_image);
+        TextView text = layout.findViewById(R.id.toast_text);
+        text.setText(message);
+
+        Toast toast = new Toast(getActivity().getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
 }
